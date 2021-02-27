@@ -1,0 +1,23 @@
+
+int led = 9;           // the PWM pin is used (PIN 9), the LED is attached to
+int bright = 0;        // how bright the LED is
+int fade = 5;          // how many points to fade the LED by
+
+void setup() {
+  pinMode(led, OUTPUT); // declare PIN 9 output:
+}
+
+void loop() {
+  // set the brightness of pin 9:
+  analogWrite(led, bright);
+
+  // change the brightness for next time through the loop:
+  bright = bright + fade;
+  
+  // reverse the direction of the fade:
+  if (bright <= 0 || bright >= 255) {
+    fade = -fade;
+  }
+  // wait for 30 milliseconds to see effect
+  delay(30);
+}
